@@ -1,0 +1,26 @@
+// The three fundamentals of redux 
+//  1. A STORE that holds the state of your application.
+// 2. An ACTION that describes what happened in the application.
+// 3. A REDUCER which handles the action and decides how to update the state.
+ 
+
+// Actions
+// The only way your application can interact with the store
+// Carry some information from your app to the redux store 
+// action is a plain JavaScript objects
+// Have a 'type' property that describes something that happened in the application
+// The 'type' property is typically defined as string constants 
+
+
+// Reducers
+// Specify how the app's state changes in response to the store
+// Fuction that accepts state and action as arguments, and returns the next state of the application
+
+
+// There's usually one Redux Store for the entire application 
+// Redux store Responsiblities :
+// => It holds application state
+// => Allows access to state via getState()
+// => Allows state to be updated via dispatch(action)
+// => Registers listeners via subscribe(listener)
+// => Handles unregistering of listeners via the function returned by subscribe(listener)
