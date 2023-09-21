@@ -24,3 +24,6 @@
 // => Allows state to be updated via dispatch(action)
 // => Registers listeners via subscribe(listener)
 // => Handles unregistering of listeners via the function returned by subscribe(listener)
+
+
+// Note is is possible to have a single reducer in an application but this on works if we few state, in case where we have many states in a shop, it will be advisable to have mutiple reducer
