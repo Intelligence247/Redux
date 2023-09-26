@@ -2,6 +2,7 @@
 const redux = require('redux')
 const createStore = redux.createStore
 const bindActionCreators = redux.bindActionCreators
+const combinReducers = redux.combineReducers
 // Actions
 const CAKE_ORDERED = 'CAKE_ORDERED';
 const RESTOCK_CAKE = 'RESTOCK_CAKE';
@@ -79,57 +80,54 @@ const initialIcecreamState = {
     
 }
 
-const CakeReducer = (state = initialCakeState, action){
+const CakeReducer = (state = initialCakeState, action) => {
     switch(action.type){
 
     case CAKE_ORDERED:
         return{
             ...state,
-            numOfCake: numOfCake - action.payload
+            numOfCake: state.numOfCake - action.payload
         }
         case RESTOCK_CAKE:
             return {
                 ...state,
-                numOfCake: numOfCake + action.payload
+                numOfCake: state.numOfCake + action.payload
             }
-            default: return state,
+            default: return state
+                
 }
 }
 
-const IceCreamReducer = (state = initialIcecreamState, action){
+const IceCreamReducer = (state = initialIcecreamState, action) => {
     switch(action.type){
         case ICE_CREAM_ORDERED:
             return{
                 ...state,
-                numOfIceCream: numOfIceCream - action.payload
+                numOfIceCream: state.numOfIceCream - action.payload
             }
             case RESTOCK_ICE_CREAM:
                 return{
                     ...state,
-                    numOfIceCream: numOfIceCream + action.payload
+                    numOfIceCream: state.numOfIceCream + action.payload
 
                 }
-                default:
-                    return state
+                default: return state
     }
 }
+const rootReducers = combinReducers({
+    cake: CakeReducer,
+    iceCream: IceCreamReducer,
+})
+ const store = createStore(rootReducers)
 
-//  const store = createStore(reducer)
+ console.log("initial state", store.getState())
 
-//  console.log("initial state", store.getState())
+ const unsubscribe = store.subscribe(() => 
+ console.log('update state', store.getState())
+ )
 
-//  const unsubscribe = store.subscribe(() => 
-//  console.log('update state', store.getState())
-//  )
-
-const CakeStore = createStore(CakeReducer)
-const IceCreamStore = createStore(IceCreamReducer)
-
-console.log("initial CakeState", CakeStore.getState())
-console.log("initial IcecreamState", IceCreamStore.getState())
-
-// store.dispatch(OrderCake(2))
-// store.dispatch(RestockCake(3))
+store.dispatch(OrderCake(2))
+store.dispatch(RestockCake(3))
 
 const actions = bindActionCreators({OrderCake, RestockCake, OrderIceCream, RestockIceCream}, store.dispatch)
 actions.OrderCake(2)
@@ -137,5 +135,3 @@ actions.RestockCake(3)
 actions.OrderIceCream(20)
 actions.RestockIceCream(10)
  unsubscribe()
- 
- 
