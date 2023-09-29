@@ -4,23 +4,23 @@ const icecreamActions = require('./features/icecream/icecreamSlice').icecreamAct
 const chickenlapActions = require('./features/chickenLap/oneChickenLap').chickenlapActions
 console.log("Initial state", store.getState())
 const unsubscribe = store.subscribe(()=> {
-    // console.log('Updated state ', store.getState())
+    console.log('Updated state ', store.getState())
 })
 
 store.dispatch(cakeActions.ordered())
 store.dispatch(cakeActions.ordered())
-store.dispatch(cakeActions.ordered(2))
-store.dispatch(cakeActions.restocked(5))
+store.dispatch(cakeActions.ordered())
+store.dispatch(cakeActions.restocked(2))
 
 store.dispatch(icecreamActions.ordered())
 store.dispatch(icecreamActions.ordered())
 store.dispatch(icecreamActions.ordered())
-store.dispatch(icecreamActions.restocked(7))
+store.dispatch(icecreamActions.restocked(3))
 
-store.dispatch(chickenlapActions.ordered())
-store.dispatch(chickenlapActions.ordered())
-store.dispatch(chickenlapActions.ordered())
-store.dispatch(chickenlapActions.restocked(5))
+// store.dispatch(chickenlapActions.ordered())
+// store.dispatch(chickenlapActions.ordered())
+// store.dispatch(chickenlapActions.ordered())
+// store.dispatch(chickenlapActions.restocked())
 
 
 unsubscribe()
