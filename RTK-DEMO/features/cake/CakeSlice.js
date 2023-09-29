@@ -7,8 +7,8 @@ const cakeSlice = createSlice({
     name: 'cake',
     initialState,
     reducers: {
-        ordered: (state) => {
-           state.numOfCakes--
+        ordered: (state, action) => {
+           state.numOfCakes -= action.payload
         },
         restocked: (state, action) => {
             state.numOfCakes += action.payload 
@@ -16,6 +16,5 @@ const cakeSlice = createSlice({
     }
 })
 
-console.log(cakeSlice)
 module.exports = cakeSlice.reducer
-module.exports.cakeActions = cakeSlice.actions
+module.exports.cakeActions = cakeSlice.actions  
