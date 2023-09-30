@@ -100,7 +100,7 @@ const fetchUsers = () => {
     return function(dispatch) {
         dispatch(FetchUsersRequest("Still processing"))
         axios
-        .get('https://jsonplaceholder.typicode.com/users').then(response => {
+        .get(url).then(response => {
             // const users = response.data.map((user) => user.id)
             const users = response.data
             dispatch(fetchUserSucceeded(users))
