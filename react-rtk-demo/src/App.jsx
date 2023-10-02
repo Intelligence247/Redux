@@ -10,8 +10,9 @@ function App() {
 <div className="body">
     <CakeView/>
     <IceCreamView/>
+    <ChickenLabView/>
     <Userview/>
-    {/* <ChickenLabView/> */}
+
 </div>    
   )
 }
